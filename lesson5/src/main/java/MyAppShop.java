@@ -1,5 +1,5 @@
 
-import geekbrains.lesson4.repository.InitData;
+import geekbrains.lesson5.repository.InitData;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -16,11 +16,6 @@ public class MyAppShop {
         InitData.initData(em);
 
         em.close();
-
-      /*  Session session = entityFactory.openSession();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-
-        CriteriaQuery<Article> criteriaQuery = criteriaBuilder.createQuery(Article.class);*/
 
 
     }

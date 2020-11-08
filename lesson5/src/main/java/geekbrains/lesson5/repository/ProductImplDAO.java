@@ -1,12 +1,11 @@
-package geekbrains.lesson4.repository;
+package geekbrains.lesson5.repository;
 
-import geekbrains.lesson4.domain.ProductinShop;
+import geekbrains.lesson5.domain.ProductinShop;
+import geekbrains.lesson5.domain.ProductinShop;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class ProductImplDAO implements ProductDAO {
@@ -20,7 +19,11 @@ public class ProductImplDAO implements ProductDAO {
         return em.createQuery("SELECT p from ProductinShop p", ProductinShop.class).getResultList();
     }
 
-
+    @Override
+    public List<ProductinShop> findByPages(int id) {
+        return em.createQuery("SELECT p from ProductinShop p where p.id > 5*(:id-1) and p.id <= 5*:id",
+                ProductinShop.class).setParameter("id", id).getResultList();
+    }
     @Override
     public ProductinShop findById(Long id) {
         return em.createQuery("SELECT p from ProductinShop p where p.id = :id", ProductinShop.class)
@@ -62,5 +65,4 @@ public class ProductImplDAO implements ProductDAO {
         System.out.println("zaglushka");
     }
 }
-
 

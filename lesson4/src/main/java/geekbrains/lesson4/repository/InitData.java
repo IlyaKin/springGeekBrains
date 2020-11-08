@@ -1,14 +1,16 @@
-import geekbrains.lesson4.shoples4.Product;
+package geekbrains.lesson4.repository;
+
+import geekbrains.lesson4.domain.ProductinShop;
 
 import javax.persistence.EntityManager;
 
 public class InitData {
 
-    private static Product PRODUCT_1 = new Product();
-    private static Product PRODUCT_2 = new Product();
-    private static Product PRODUCT_3 = new Product();
-    private static Product PRODUCT_4 = new Product();
-    private static Product PRODUCT_5 = new Product();
+    private static ProductinShop PRODUCT_1 = new ProductinShop();
+    private static ProductinShop PRODUCT_2 = new ProductinShop();
+    private static ProductinShop PRODUCT_3 = new ProductinShop();
+    private static ProductinShop PRODUCT_4 = new ProductinShop();
+    private static ProductinShop PRODUCT_5 = new ProductinShop();
 
     static {
         PRODUCT_1.setTitle("meat");
@@ -38,23 +40,23 @@ public class InitData {
         em.getTransaction().commit();
     }
 
-    public static Product getProduct1() {
+    public static ProductinShop getProduct1() {
         return PRODUCT_1;
     }
 
-    public static Product getProduct2() {
+    public static ProductinShop getProduct2() {
         return PRODUCT_2;
     }
 
-    public static Product getProduct3() {
+    public static ProductinShop getProduct3() {
         return PRODUCT_3;
     }
 
-    public static Product getProduct4() {
+    public static ProductinShop getProduct4() {
         return PRODUCT_4;
     }
 
-    public static Product getProduct5() {
+    public static ProductinShop getProduct5() {
         return PRODUCT_5;
     }
 }
