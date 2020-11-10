@@ -69,6 +69,11 @@ public class ProductController {
         return String.valueOf(byId == null ? null : byId.getPrice());
     }
 
+    @GetMapping("/filter")
+    public String getFormFilter(){
+        return "filter";
+    }
+
     // http://localhost:8080/app/products/new - GET
     @GetMapping("/new")
     public String getFormNewProduct(Model model){
