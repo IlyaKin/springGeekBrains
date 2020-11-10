@@ -1,7 +1,6 @@
 package geekbrains.lesson5.repository;
 
 import geekbrains.lesson5.domain.ProductinShop;
-import geekbrains.lesson5.domain.ProductinShop;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -41,23 +40,18 @@ public class ProductImplDAO implements ProductDAO {
 
     @Override
     public void save(ProductinShop product) {
-        em.getTransaction().begin();
         em.persist(product);
-        em.getTransaction().commit();
+
     }
 
     @Override
     public void update(ProductinShop product) {
-        em.getTransaction().begin();
         em.merge(product);
-        em.getTransaction().commit();
     }
 
     @Override
     public void delete(ProductinShop title) {
-        em.getTransaction().begin();
         em.remove(title);
-        em.getTransaction().commit();
     }
 
     @Override

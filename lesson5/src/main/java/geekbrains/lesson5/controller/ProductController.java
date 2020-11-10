@@ -40,7 +40,7 @@ public class ProductController {
 
 
 
-    // http://localhost:8080/app/products/1 - GET
+    // http://localhost:8080/myapp/products/1 - GET
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getById(Model model,@PathVariable("id") Long id){
         ProductinShop byId = productService.getById(id);
@@ -61,7 +61,7 @@ public class ProductController {
         return "products";
     }
 
-    // http://localhost:8080/app/products/1/price - GET
+    // http://localhost:8080/myapp/products/1/price - GET
     @RequestMapping(value = "/{id}/price", method = RequestMethod.GET)
     @ResponseBody
     public String apiPrice(@PathVariable Long id){
@@ -76,13 +76,12 @@ public class ProductController {
         return "new-product";
     }
 
-   /* // http://localhost:8080/app/products/new - POST
+   // http://localhost:8080/app/products/new - POST
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addNewProduct(ProductinShop product){
-        ProductinShop savedProduct = productService.save(product);
-        System.out.println(savedProduct);
-        return "redirect:/products/" + savedProduct.getId();
-    }*/
+        productService.save(product);
+        return "redirect:/products";
+    }
 
     // http://localhost:8080/app/products/any
     @RequestMapping(value = "any")
@@ -91,35 +90,13 @@ public class ProductController {
         return "any request " + UUID.randomUUID().toString();
     }
 
-    // http://localhost:8080/app/products?price_from=35.4&priceTo=3
-    @GetMapping(params = {"price_from", "priceTo"})
+    // http://localhost:8080/myapp/products?from=35.4&to=3
+    @GetMapping(params = {"from", "to"})
     public String productsByPrice(Model model,
-                                  @RequestParam(name = "price_from") double priceFrom,
-                                  @RequestParam double priceTo){
-        List<ProductinShop> products = productService.getByPrice(priceFrom, priceTo);
+                                  @RequestParam(name = "from") double from,
+                                  @RequestParam double to){
+        List<ProductinShop> products = productService.getByPrice(from, to);
         model.addAttribute("products", products);
         return "list";
     }
-
-    // http://localhost:8080/app/filter?price_from=35.4&priceTo=3
-    @GetMapping("/filter")
-    public String filterByPrice(Model model,
-                                @RequestParam(name = "price_from") double priceFrom,
-                                @RequestParam(required = false) Double priceTo){
-        List<ProductinShop> products =
-                productService.getByPrice(priceFrom, priceTo == null ? Double.MAX_VALUE : priceTo);
-        model.addAttribute("products", products);
-        return "list";
-    }
-
-    // http://localhost:8080/app/filter {title:"asd"}
-    @PostMapping("/filter")
-    @ResponseBody
-    public String filterByTitle(@RequestParam String title){
-        return productService.getAll().stream()
-                .filter(product-> product.getTitle().contains(title))
-                .map(product -> String.valueOf(product.getId()))
-                .collect(Collectors.joining(","));
-    }
-
 }

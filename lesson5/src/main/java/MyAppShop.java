@@ -15,7 +15,7 @@ public class MyAppShop {
 
         InitData.initData(em);
 
-        em.close();
+        //em.close();
 
 
     }

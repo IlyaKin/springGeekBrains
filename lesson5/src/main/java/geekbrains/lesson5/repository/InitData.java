@@ -34,25 +34,25 @@ public class InitData {
         PRODUCT_5.setTitle("crub");
         PRODUCT_5.setPrice(1500.65);
         PRODUCT_6.setTitle("bread");
-        PRODUCT_6.setPrice(306.0);
+        PRODUCT_6.setPrice(44.0);
         PRODUCT_7.setTitle("sandwitch");
-        PRODUCT_7.setPrice(65.50);
+        PRODUCT_7.setPrice(85.50);
         PRODUCT_8.setTitle("water");
-        PRODUCT_8.setPrice(90.30);
+        PRODUCT_8.setPrice(25.30);
         PRODUCT_9.setTitle("orange");
-        PRODUCT_9.setPrice(85.32);
+        PRODUCT_9.setPrice(70.32);
         PRODUCT_10.setTitle("juice");
-        PRODUCT_10.setPrice(1500.65);
+        PRODUCT_10.setPrice(110.65);
         PRODUCT_11.setTitle("alcohole");
-        PRODUCT_11.setPrice(306.0);
+        PRODUCT_11.setPrice(550.0);
         PRODUCT_12.setTitle("candle");
-        PRODUCT_12.setPrice(65.50);
+        PRODUCT_12.setPrice(300.50);
         PRODUCT_13.setTitle("oil");
-        PRODUCT_13.setPrice(90.30);
+        PRODUCT_13.setPrice(105.30);
         PRODUCT_14.setTitle("limonade");
-        PRODUCT_14.setPrice(85.32);
+        PRODUCT_14.setPrice(63.32);
         PRODUCT_15.setTitle("vodka");
-        PRODUCT_15.setPrice(1500.65);
+        PRODUCT_15.setPrice(880.65);
 
     }
 

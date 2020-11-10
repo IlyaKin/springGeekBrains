@@ -2,7 +2,9 @@ package geekbrains.lesson5.service;
 
 import geekbrains.lesson5.domain.ProductinShop;
 import geekbrains.lesson5.repository.ProductImplDAO;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
@@ -48,9 +50,10 @@ public class ProductService {
                 .sorted(Comparator.comparingDouble(ProductinShop::getPrice))
                 .collect(Collectors.toList());
     }
-
+    @Transactional
     public void save(ProductinShop product){
-         productImplDAO.save(product);
+        productImplDAO.save(product);
+
     }
 
     public void removeById(Long id){
