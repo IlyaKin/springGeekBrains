@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Editing</title>
+</head>
+<body>
+<h1>All products</h1>
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Title</td>
+        <td>Price</td>
+
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">Id</td>
+        <td th:text="${product.title}">Title</td>
+        <td th:text="${product.price}">Price</td>
+    </tr>
+</table>
+
+<h1>Edit product</h1>
+<form th:action="@{/products}"  method="get">
+    <table border="1">
+        <tr>
+            <td>Id</td>
+            <td><input type="number" name="idparam"/> </td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td><input type="text" name="titleparam"/></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="number" name="priceparam"/></td>
+        </tr>
+    </table>
+    <button type="submit">Save</button>
+</form>
+<p><a th:href="@{/products}">Home</a></p>
+</body>
+</html>

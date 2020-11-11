@@ -52,8 +52,12 @@ public class ProductService {
     }
     @Transactional
     public void save(ProductinShop product){
-        productImplDAO.save(product);
+         productImplDAO.save(product);
 
+    }
+    @Transactional
+    public List<ProductinShop> update(ProductinShop product){
+        return productImplDAO.update(product);
     }
 
     public void removeById(Long id){

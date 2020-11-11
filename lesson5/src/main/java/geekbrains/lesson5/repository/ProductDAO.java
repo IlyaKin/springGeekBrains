@@ -11,7 +11,7 @@ public interface ProductDAO {
     ProductinShop findmaxPrice();
     ProductinShop findminPrice();
     void save(ProductinShop product);
-    void update(ProductinShop product);
+    List<ProductinShop> update(ProductinShop productinShop);
     void delete(ProductinShop author);
     void deletebyId(Long id);
 }

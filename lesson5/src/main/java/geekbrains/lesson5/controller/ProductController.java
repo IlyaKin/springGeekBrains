@@ -21,10 +21,21 @@ public class ProductController {
     }
 
     // http://localhost:8080/myapp/products - GET
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping()
     public String list(Model model){
         List<ProductinShop> products = productService.getAll();
         model.addAttribute("products", products);
+        return "list";
+    }
+
+    @GetMapping(params = {"idparam","titleparam", "priceparam"})
+    public String updateBD(Model model,
+                           @RequestParam(name = "idparam") Long idparam,
+                           @RequestParam (name = "titleparam")String titleparam,
+                           @RequestParam (name = "priceparam")double priceparam){
+        ProductinShop product = new ProductinShop(idparam,titleparam,priceparam);
+        List<ProductinShop> productinShops =  productService.update(product);
+        model.addAttribute("products", productinShops);
         return "list";
     }
 
@@ -37,8 +48,6 @@ public class ProductController {
         model.addAttribute("back", id-1);
         return "pages";
     }
-
-
 
     // http://localhost:8080/myapp/products/1 - GET
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -79,6 +88,12 @@ public class ProductController {
     public String getFormNewProduct(Model model){
         model.addAttribute("product", new ProductinShop());
         return "new-product";
+    }
+    @GetMapping("/edit")
+    public String getFormEdit(Model model){
+        List<ProductinShop> products = productService.getAll();
+        model.addAttribute("products", products);
+        return "edit_page";
     }
 
    // http://localhost:8080/app/products/new - POST

@@ -42,7 +42,7 @@ public class SpringDataConfig {
         jpaProperties.put("hibernate.jdbc.fetch_size", 50);
         jpaProperties.put("hibernate.jdbc.batch_size", 10);
         jpaProperties.put("hibernate.show_sql", true);
-        jpaProperties.put("hibernate.hbm2ddl.auto", "create");
+
         factory.setJpaProperties(jpaProperties);
         return factory;
     }

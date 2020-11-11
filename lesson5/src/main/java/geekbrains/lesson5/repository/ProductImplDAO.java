@@ -2,6 +2,7 @@ package geekbrains.lesson5.repository;
 
 import geekbrains.lesson5.domain.ProductinShop;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -15,7 +16,7 @@ public class ProductImplDAO implements ProductDAO {
 
     @Override
     public List<ProductinShop> findAll() {
-        return em.createQuery("SELECT p from ProductinShop p", ProductinShop.class).getResultList();
+        return em.createQuery("SELECT p from ProductinShop p order by p.id", ProductinShop.class).getResultList();
     }
 
     @Override
@@ -25,7 +26,7 @@ public class ProductImplDAO implements ProductDAO {
     }
     @Override
     public ProductinShop findById(Long id) {
-        return em.createQuery("SELECT p from ProductinShop p where p.id = :id", ProductinShop.class)
+        return em.createQuery("select p from ProductinShop p where p.id = :id", ProductinShop.class)
                 .setParameter("id", id).getSingleResult();
     }
 
@@ -45,8 +46,10 @@ public class ProductImplDAO implements ProductDAO {
     }
 
     @Override
-    public void update(ProductinShop product) {
-        em.merge(product);
+    public List<ProductinShop> update(ProductinShop productinShop) {
+        em.merge(productinShop);
+        List<ProductinShop> products = findAll();
+        return products;
     }
 
     @Override
