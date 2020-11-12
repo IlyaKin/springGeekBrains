@@ -36,14 +36,14 @@ public class SpringDataConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setDataSource(getDataSource());
         factory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        factory.setPackagesToScan("geekbrains.lesson4.geekbrains.lesson5.domain");
+        factory.setPackagesToScan("geekbrains.lesson4.domain");
         Properties jpaProperties = new Properties();
         jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
         jpaProperties.put("hibernate.max_fetch_depth", 3);
         jpaProperties.put("hibernate.jdbc.fetch_size", 50);
         jpaProperties.put("hibernate.jdbc.batch_size", 10);
         jpaProperties.put("hibernate.show_sql", true);
-        jpaProperties.put("hibernate.hbm2ddl.auto", "create");
+
         factory.setJpaProperties(jpaProperties);
         return factory;
     }

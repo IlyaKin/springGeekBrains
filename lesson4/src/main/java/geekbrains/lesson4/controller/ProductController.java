@@ -16,6 +16,7 @@ public class ProductController {
 
     private final ProductService productService;
 
+
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
@@ -36,6 +37,7 @@ public class ProductController {
                 byId == null ? new ProductinShop(): byId);
         return "products";
     }
+
     @RequestMapping("/max")
     public String getmaxPrice(Model model){
         ProductinShop product = productService.getmaxPrice();
@@ -49,13 +51,6 @@ public class ProductController {
         return "products";
     }
 
-    // http://localhost:8080/app/products/1/price - GET
-    @RequestMapping(value = "/{id}/price", method = RequestMethod.GET)
-    @ResponseBody
-    public String apiPrice(@PathVariable Long id){
-        ProductinShop byId = productService.getById(id);
-        return String.valueOf(byId == null ? null : byId.getPrice());
-    }
 
     // http://localhost:8080/app/products/new - GET
     @GetMapping("/new")
@@ -64,14 +59,13 @@ public class ProductController {
         return "new-product";
     }
 
-   /* // http://localhost:8080/app/products/new - POST
+    // http://localhost:8080/app/products/new - POST
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addNewProduct(ProductinShop product){
-        ProductinShop savedProduct = productService.save(product);
-        System.out.println(savedProduct);
-        return "redirect:/products/" + savedProduct.getId();
-    }*/
-
+        productService.save(product);
+        return "redirect:/products";
+    }
+/*
     // http://localhost:8080/app/products/any
     @RequestMapping(value = "any")
     @ResponseBody
@@ -108,6 +102,6 @@ public class ProductController {
                 .filter(product-> product.getTitle().contains(title))
                 .map(product -> String.valueOf(product.getId()))
                 .collect(Collectors.joining(","));
-    }
+    }*/
 
 }
