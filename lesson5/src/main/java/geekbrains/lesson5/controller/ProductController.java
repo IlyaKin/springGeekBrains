@@ -28,7 +28,7 @@ public class ProductController {
         return "list";
     }
 
-    @GetMapping(params = {"idparam","titleparam", "priceparam"})
+   /* @GetMapping(params = {"idparam","titleparam", "priceparam"})
     public String updateBD(Model model,
                            @RequestParam(name = "idparam") Long idparam,
                            @RequestParam (name = "titleparam")String titleparam,
@@ -47,7 +47,7 @@ public class ProductController {
         model.addAttribute("next", id+1);
         model.addAttribute("back", id-1);
         return "pages";
-    }
+    }*/
 
     // http://localhost:8080/myapp/products/1 - GET
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -57,7 +57,7 @@ public class ProductController {
                 byId == null ? new ProductinShop(): byId);
         return "products";
     }
-    @RequestMapping("/max")
+    /*@RequestMapping("/max")
     public String getmaxPrice(Model model){
         ProductinShop product = productService.getmaxPrice();
         model.addAttribute("products", product);
@@ -68,7 +68,7 @@ public class ProductController {
         ProductinShop product = productService.getminPrice();
         model.addAttribute("products", product);
         return "products";
-    }
+    }*/
 
     // http://localhost:8080/myapp/products/1/price - GET
     @RequestMapping(value = "/{id}/price", method = RequestMethod.GET)
