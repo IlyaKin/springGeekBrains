@@ -7,7 +7,7 @@ import java.util.Objects;
 @Table(name = "productsinshop")
 public class ProductinShop {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "title")
     private String title;

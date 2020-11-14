@@ -37,6 +37,18 @@ public class ProductImplDAO implements ProductService {
     public List<ProductinShop> getByPrice(double priceFrom, double priceTo) {
         return productDAO.findAllByPriceBetween(priceFrom, priceTo);
     }
+
+    @Override
+    public List<ProductinShop> update(ProductinShop productinShop) {
+        productDAO.update(productinShop.getId(), productinShop.getTitle(), productinShop.getPrice());
+        return productDAO.findAll();
+    }
+
+    @Override
+    public List<ProductinShop> getByPages(int id) {
+        return productDAO.findByPages(id);
+    }
+
 }
 
 

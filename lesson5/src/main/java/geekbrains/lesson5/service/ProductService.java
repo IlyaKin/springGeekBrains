@@ -16,5 +16,9 @@ public interface ProductService {
     ProductinShop save(ProductinShop product);
 
     List<ProductinShop> getByPrice(double priceFrom, double priceTo);
+
+    List<ProductinShop> update(ProductinShop product);
+
+    List<ProductinShop> getByPages(int id);
 }
 
