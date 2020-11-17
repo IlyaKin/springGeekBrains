@@ -28,6 +28,12 @@ public class ProductController {
         return "list";
     }
 
+    @GetMapping("/{id}")
+    @ResponseBody
+    public ProductinShop getProduct (@PathVariable Long id){
+        return productService.getById(id);
+    }
+
     @GetMapping(params = {"idparam","titleparam", "priceparam"})
     public String updateBD(Model model,
                            @RequestParam(name = "idparam") Long idparam,
@@ -47,15 +53,6 @@ public class ProductController {
         model.addAttribute("next", id+1);
         model.addAttribute("back", id-1);
         return "pages";
-    }
-
-    // http://localhost:8080/myapp/products/1 - GET
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String getById(Model model,@PathVariable("id") Long id){
-        ProductinShop byId = productService.getById(id);
-        model.addAttribute("products",
-                byId == null ? new ProductinShop(): byId);
-        return "products";
     }
 
 
