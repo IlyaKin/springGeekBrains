@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
@@ -22,9 +22,15 @@
         <td th:text="${product.price}">Price</td>
     </tr>
 </table>
-<p><a th:href="@{/products}">Home</a></p>
+<p><a th:href="@{/}">Home</a></p>
+<div sec:authorize ="hasAuthority('ADMIN')"  >
 <p><a th:href="@{'/products/new'}">Add new product</a></p>
+</div>
 <p><a th:href="@{'/products/page_1'}">Pages navigation</a></p>
+
+<div sec:authorize ="hasAuthority('ADMIN')"  >
 <p><a th:href="@{'/products/edit'}">Edit</a></p>
+</div>
+
 </body>
 </html>

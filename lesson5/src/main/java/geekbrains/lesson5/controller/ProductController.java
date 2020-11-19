@@ -1,6 +1,8 @@
 package geekbrains.lesson5.controller;
 
 import geekbrains.lesson5.domain.ProductinShop;
+import geekbrains.lesson5.domain.Role;
+import geekbrains.lesson5.domain.User;
 import geekbrains.lesson5.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +12,11 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 @Controller
 @RequestMapping("/products")
 public class ProductController {
+
 
     private final ProductService productService;
 
@@ -63,15 +67,16 @@ public class ProductController {
 
     // http://localhost:8080/app/products/new - GET
     @GetMapping("/new")
-    public String getFormNewProduct(Model model){
+    public String getFormNewProduct(Model model) {
         model.addAttribute("product", new ProductinShop());
         return "new-product";
     }
+
     @GetMapping("/edit")
     public String getFormEdit(Model model){
-        List<ProductinShop> products = productService.getAll();
-        model.addAttribute("products", products);
-        return "edit_page";
+            List<ProductinShop> products = productService.getAll();
+            model.addAttribute("products", products);
+            return "edit_page";
     }
 
    // http://localhost:8080/app/products/new - POST

@@ -23,7 +23,7 @@
         <td th:text="${product.price}">Price</td>
     </tr>
 </table>
-<p><a th:href="@{/products}">Home</a></p>
+<p><a th:href="@{/products}">All products</a></p>
 <p><a th:href="@{'/products/page_' + ${next}}">Next</a></p>
 <p><a th:href="@{'/products/page_' + ${back}}">Back</a></p>
 <p><a th:href="@{'/products/filter'}">Filter</a></p>
