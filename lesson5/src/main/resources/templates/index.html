@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+
+<h2>Welcome!!!</h2>
+<h2 th:text="${message}"/>
+<div sec:authorize="!isAuthenticated()">
+    <a th:href="@{/login}">Login</a><br>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <a th:href="@{/logout}">Logout</a><br>
+</div>>
+<a th:href="@{/products}">All products</a><br>
+<div sec:authorize ="hasAuthority('ADMIN')"  >
+    <p><a th:href="@{'/users'}">All users</a></p>
+</div>
+</body>
+</html>

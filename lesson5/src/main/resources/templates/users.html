@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+<h1>All users</h1>
+
+
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Username</td>
+        <td>Role</td>
+
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">Id</td>
+        <td th:text="${user.username}">Username</td>
+        <td th:text="${user.Role}">Role</td>
+    </tr>
+</table>
+<p><a th:href="@{/}">Home</a></p>
+
+
+</body>
+</html>

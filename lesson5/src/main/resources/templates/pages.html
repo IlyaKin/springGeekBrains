@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+
+<h1>Products</h1>
+<h2>Page</h2>
+<h3 th:text = "${page}">Page</h3>
+
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Title</td>
+        <td>Price</td>
+
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">Id</td>
+        <td th:text="${product.title}">Title</td>
+        <td th:text="${product.price}">Price</td>
+    </tr>
+</table>
+<p><a th:href="@{/products}">All products</a></p>
+<p><a th:href="@{'/products/page_' + ${next}}">Next</a></p>
+<p><a th:href="@{'/products/page_' + ${back}}">Back</a></p>
+<p><a th:href="@{'/products/filter'}">Filter</a></p>
+
+</body>
+</html>
