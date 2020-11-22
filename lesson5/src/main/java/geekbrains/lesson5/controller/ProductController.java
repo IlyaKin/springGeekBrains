@@ -4,6 +4,7 @@ import geekbrains.lesson5.domain.ProductinShop;
 import geekbrains.lesson5.domain.Role;
 import geekbrains.lesson5.domain.User;
 import geekbrains.lesson5.service.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
